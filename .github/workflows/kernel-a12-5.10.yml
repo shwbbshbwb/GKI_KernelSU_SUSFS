@@ -43,9 +43,9 @@ on:
         default: true
       onlyAk3:
         description: '仅上传AK3压缩包?(无boot,下载更快)'
-        required: false
+        required: true
         type: boolean
-        default: false
+        default: true
       build_time:
         description: '设置内核构建时间(格式见仓库说明)'
         required: false

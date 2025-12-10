@@ -374,9 +374,7 @@ jobs:
             cp ../../zzh_patch/5.10-patch/fdinfo.c.patch ./
             patch -p1 < fdinfo.c.patch
           fi
-          wget https://raw.githubusercontent.com/Anatdx/hymo/refs/heads/master/patch/dirtyhymofs.patch
-patch -p1 -F 3 < dirtyhymofs.patch
-          echo "CONFIG_HYMOFS=y" >> ./common/arch/arm64/configs/gki_defconfig
+        
       - name: 一些修复补丁
         run: |
           cd "$CONFIG/common"
@@ -616,7 +614,9 @@ patch -p1 -F 3 < dirtyhymofs.patch
           echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SUS_MAP=y" >> ./common/arch/arm64/configs/gki_defconfig
-          
+          wget https://raw.githubusercontent.com/Anatdx/hymo/refs/heads/master/patch/dirtyhymofs.patch
+          patch -p1 -F 3 < dirtyhymofs.patch
+          echo "CONFIG_HYMOFS=y" >> ./common/arch/arm64/configs/gki_defconfig
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
 

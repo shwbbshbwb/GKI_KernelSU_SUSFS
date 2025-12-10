@@ -374,7 +374,9 @@ jobs:
             cp ../../zzh_patch/5.10-patch/fdinfo.c.patch ./
             patch -p1 < fdinfo.c.patch
           fi
-  
+          wget https://raw.githubusercontent.com/Anatdx/hymo/refs/heads/master/patch/dirtyhymofs.patch
+patch -p1 -F 3 < dirtyhymofs.patch
+          echo "CONFIG_HYMOFS=y" >> ./common/arch/arm64/configs/gki_defconfig
       - name: 一些修复补丁
         run: |
           cd "$CONFIG/common"
